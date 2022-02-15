@@ -1,12 +1,14 @@
 {
   "expo": {
     "name": "code-Help",
-    "slug": "code-Help",
+    "slug": "codeHelp",
+    "privacy": "public",
+    "description": "An application to help with everyday coding needs",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/xxxhdpi.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/iphone_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
