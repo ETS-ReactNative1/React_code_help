@@ -1,25 +1,35 @@
-import React from 'react';
+import {useState} from 'react';
 import { View,StyleSheet} from 'react-native';
 import Results from './Results'; 
 import { Button, Text } from 'react-native-elements';
+import * as Clipboard from 'expo-clipboard';
 
-function saveAction() {
-  console.log('hello')
-}
-
+ 
 function ResultTab({props}) {
+  // console.log('testnow',props)
+  const [copyClr,setCopyClr] = useState('white')
+  const [saveClr,setSaveClr] = useState('white')
+  const copyAction = () => {
+    Clipboard.setString(props.answer);
+    setCopyClr('gold')
+    setTimeout(() => {
+      // console.log('dsd')
+      setCopyClr('white')
+    }, 900);
+  }
+props.colorChg = setSaveClr
+  if(props.language === 'whatever'){ props.language = 'Unknown'}
     return <View style={styles.input} key={props.key}>
       <View style={styles.option}>
       <Button
                   icon={{
-                    name: 'save',
-                    type: 'font-awesome',
+                    name: props.typeText,
                     size: 15,
-                    color: 'white',
+                    color: saveClr,
                   }}
                   buttonStyle={styles.saveBtn}
                   containerStyle={styles.save}
-                  onPress={saveAction}
+                  onPress={() => { props.ansType(props)}}
             />
         <Text style={{color: 'white'}} >{props.language}</Text>
     
@@ -28,7 +38,7 @@ function ResultTab({props}) {
                     name: 'copy',
                     type: 'font-awesome',
                     size: 15,
-                    color: 'white',
+                    color: copyClr,
                   }}
                   buttonStyle={{
                     backgroundColor: 'black',
@@ -37,6 +47,7 @@ function ResultTab({props}) {
                     borderRadius: 30,
                   }}
                   containerStyle={styles.save}
+                  onPress={copyAction}
                 />
        
       </View>

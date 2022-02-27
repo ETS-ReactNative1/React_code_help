@@ -1,12 +1,14 @@
 import {useContext} from 'react';
 import { View,StyleSheet,ScrollView} from 'react-native';
 import {HelpContext} from "../contextApi/context";
-
+import LoadingScreen from './LoadingScreen';
 
 
 function ResultDisplay() {
-  const {answer} = useContext(HelpContext)
-  
+  const {answer,loading} = useContext(HelpContext)
+  if (loading.load) {
+    return <LoadingScreen answer={loading.noAnswer} />
+  }
   return (
     <ScrollView   showsVerticalScrollIndicator ={false}
     showsHorizontalScrollIndicator={false} >
