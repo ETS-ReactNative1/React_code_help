@@ -39,9 +39,11 @@ static void InitializeFlipper(UIApplication *application) {
   
   RCTBridge *bridge = [self.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions];
 
+
   #if RCT_DEV
     [bridge moduleForClass:[RCTDevLoadingView class]];
   #endif
+
 
   RCTRootView *rootView = [self.reactDelegate createRootViewWithBridge:bridge moduleName:@"main" initialProperties:nil];
   rootView.backgroundColor = [UIColor whiteColor];
