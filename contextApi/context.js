@@ -1,7 +1,7 @@
 import { createContext, useState,useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Key from '../assets/key';
-
+import * as ImagePicker from 'expo-image-picker';
 
 const axios = require('axios');
 export const HelpContext = createContext();
@@ -19,6 +19,7 @@ const HelpProvider = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [user,setUser] = useState('')
     const [image, setImage] = useState(null);
+    const [color, setColor] = useState('rgba(230,81,116,0.7)');
 
     async function search(query,other) {
       const response = axios.create({
@@ -187,6 +188,26 @@ const HelpProvider = (props) => {
             }
           })
       },[])
+      const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        const options = {
+          mediaTypes:  ImagePicker.MediaTypeOptions.Images,
+          base64: true,
+          allowsEditing: true,
+          quality: 1,
+          aspect: [4, 3],
+        }
+        const result = await ImagePicker.launchImageLibraryAsync(options)
+
+
+        if (!result.cancelled) {
+            setColor('green')
+            storeData('image',result.base64)
+          setImage(result.base64);
+        }else {
+            setColor('red')
+        }
+      };
 
     const value ={
         answer,
@@ -215,7 +236,9 @@ const HelpProvider = (props) => {
             user,
             setUser,
             image, 
-            setImage
+            setImage,
+            pickImage,
+            color
     }
     return (
         <HelpContext.Provider value={value}>

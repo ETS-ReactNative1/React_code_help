@@ -1,4 +1,4 @@
-package com.segunsub.codehelp;
+package com.segunsub.codeHelp;
 
 import android.os.Build;
 import android.os.Bundle;

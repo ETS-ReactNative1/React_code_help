@@ -1,4 +1,4 @@
-package com.segunsub.codehelp;
+package com.segunsub.codeHelp;
 
 import android.app.Application;
 import android.content.Context;
@@ -79,7 +79,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.segunsub.codehelp.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.segunsub.codeHelp.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

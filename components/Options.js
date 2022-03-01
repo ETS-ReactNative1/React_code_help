@@ -10,6 +10,7 @@ import {
   import { CheckBox } from 'react-native-elements';
   import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
   import Ionicons from 'react-native-vector-icons/Ionicons';
+import DrawerItemL from './DrawerItemL';
   
   const placeholder = {
     label: 'Select a Title...',
@@ -71,9 +72,15 @@ const help = [
   { label: 'allHelp', value: 'allHelp',color: 'black' }
 ]
 
-function Options(props) { 
+function Options(props) {
+  // useEffect(() => {
+  //   props.state.routes.pop() 
+    
+  // },[])
+
+  
   // console.log(props,'handle')
-  const {moreHelp,user,setMoreHelp,checkBox,setCheckBox,titleSearch,setTitleSearch,answer,codeCount,setCodeCount,getData,image,setModalVisible,removeData} = useContext(HelpContext)
+  const {moreHelp,user,setMoreHelp,checkBox,setCheckBox,titleSearch,setTitleSearch,answer,codeCount,setCodeCount,getData,image,setModalVisible,pickImage} = useContext(HelpContext)
   useEffect(() => {
     getData('codeAnswer').then(result => {
       if(result !== null) {
@@ -89,10 +96,13 @@ function Options(props) {
         <ImageBackground
                   source={require('../assets/images/menu-bg.jpeg')}
                   style={{padding: 20,paddingTop:40}}>
+                    <TouchableOpacity onPress={pickImage}>
                   <Image
                     source={image ? { uri: `data:image/gif;base64,${image}` } : require('../assets/images/user-profile.jpg')}
                     style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
+                    
                   />
+                  </TouchableOpacity>
                   <Text
                     style={{
                       color: '#fff',
@@ -113,7 +123,9 @@ function Options(props) {
                   </View>
         </ImageBackground>
         <View style={{flex: 1, backgroundColor: 'black', paddingTop: '10%'}}>
-          <DrawerItemList {...props} />
+          {/* <DrawerItemList {...props} /> */}
+          <DrawerItemL state={props} focus={0}/>
+          <DrawerItemL state={props} focus={1}/>
           <View paddingVertical={5} style={{marginLeft: 17,width: '60%'}}>
                       <Text style={{color: 'white'}}>Search By Titles</Text>
                       <View style={{backgroundColor: 'gray'}}>
@@ -177,23 +189,20 @@ function Options(props) {
 
         </View>
         </DrawerContentScrollView>
-        <TouchableOpacity onPress={() => {removeData('info')}} style={{paddingVertical: 15,padding: 20}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Ionicons name="information-circle-outline" size={22} color='white'/>
-            <Text
-              style={{
-                fontSize: 15,
-                marginLeft: 5,
-                color: 'white'
-              }}>
-              About
-            </Text>
+        <TouchableOpacity onPress={() => {
+          // removeData('info')
+
+         props.navigation.navigate('About')
+
+         }} style={{paddingBottom: 20}}>
+          <View >
+            <DrawerItemL state={props} focus={2} />
           </View>
         </TouchableOpacity>
         </View>
       );
 }
-
+//flexDirection: 'row', alignItems: 'center'
 
 
 export default Options;

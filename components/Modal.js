@@ -1,41 +1,17 @@
-import React, { useContext,useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View,Image } from "react-native";
-import { Input,Tooltip, Icon,Button } from 'react-native-elements';
+import React, { useContext } from "react";
+import { Alert, Modal, StyleSheet, Text, Pressable, View,TouchableOpacity } from "react-native";
+import { Input,Tooltip,Button } from 'react-native-elements';
 import {HelpContext} from "../contextApi/context";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import * as ImagePicker from 'expo-image-picker';
+
 
  
 
 
 const ModalS = () => {
-    const {modalVisible, setModalVisible,user,setUser, setImage,storeData} = useContext(HelpContext)
-    const [color, setColor] = useState('rgba(230,81,116,0.7)');
+    const {modalVisible, setModalVisible,user,setUser, color,pickImage,storeData,removeData} = useContext(HelpContext)
+   
 
-
-
-
-    const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
-        const options = {
-          mediaTypes:  ImagePicker.MediaTypeOptions.Images,
-          base64: true,
-          allowsEditing: true,
-          quality: 1,
-          aspect: [4, 3],
-        }
-        const result = await ImagePicker.launchImageLibraryAsync(options)
-        console.log(result,'letsee')
-
-
-        if (!result.cancelled) {
-            setColor('green')
-            storeData('image',result.base64)
-          setImage(result.base64);
-        }else {
-            setColor('red')
-        }
-      };
 
   return (
       <Modal
@@ -50,6 +26,7 @@ const ModalS = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Customize App</Text>
+          
             <View  style={{
                 height:'100%',
                 width:'100%',
@@ -91,7 +68,7 @@ const ModalS = () => {
                 <View style={{
                       flexDirection: 'row',
                       width: '100%',
-                      alignItems: 'end',
+                      alignItems: 'flex-end',
                       justifyContent: 'space-between'
                 }}>
                     
@@ -104,14 +81,25 @@ const ModalS = () => {
               containerStyle={{
                     borderRadius: 20,
                     padding: 10,
-                    elevation: 2,
-                    // backgroundColor: 'rgba(230,81,116,0.7)'
+                    elevation: 2
                   }
               }
             >
               <Ionicons name="help" size={22} color='white' />
             </Tooltip>
-   
+            <TouchableOpacity onPress={() => {
+              removeData('image')
+              removeData('user')
+              removeData('info')
+              removeData('codeAnswer')
+              Alert.alert(
+                "Reload App to start fresh")
+              }}>
+                 <Ionicons name="refresh" size={22} color='white' />
+            </TouchableOpacity>
+             
+           
+            
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {

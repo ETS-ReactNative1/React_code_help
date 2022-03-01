@@ -12,7 +12,7 @@ export default function App() {
       <HelpProvider>
         <NavigationContainer>
           <ModalS/>
-          <CodeHelp />
+          <CodeHelp/>
         </NavigationContainer>
       </HelpProvider>
   

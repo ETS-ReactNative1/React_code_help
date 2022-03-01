@@ -1,4 +1,4 @@
-import {useContext,useEffect,useState} from 'react';
+import {useContext,useEffect} from 'react';
 import {  createDrawerNavigator} from '@react-navigation/drawer';
 import Feed from './Feed';
 import CodeSaved from './CodeSaved';
@@ -8,8 +8,8 @@ import {HelpContext} from "../contextApi/context";
 import { Image } from 'react-native-elements';
 import LoadingScreen from './LoadingScreen';
 import Carousel from './Carousel';
-import { Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import About from './About';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,17 +18,6 @@ const Drawer = createDrawerNavigator();
 
 function CodeHelp() {
   const {getData,setSavedAnswer,storeData,showOneTimeScreen,setCodeCount} = useContext(HelpContext)
-
-  // useEffect(() => {
-  //   getData('info').then(data => {
-  //     if(data === null) {
-  //       setShowOneTimeScreen(true)
-  //     }else {
-  //       setShowOneTimeScreen(false)
-  //     }
-  //     console.log(data,showOneTimeScreen)
-  //   })
-  // }, [])
 
 
   function CodeSyntax({ navigation }) {
@@ -123,7 +112,7 @@ const options = ({navigation}) => {
   headerStyle: {
     backgroundColor: 'black',
     borderBottomColor: 'black',
-    borderBottomWidth: 0
+    borderBottomWidth: 0,
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
@@ -137,6 +126,23 @@ const options = ({navigation}) => {
   )
   }
   }
+  const Aoptions = () => { 
+    return {  title: 'About',
+    headerStyle: {
+      backgroundColor: 'black',
+      borderBottomColor: 'black',
+      borderBottomWidth: 0,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+    drawerIcon: ({color}) => (
+      <Ionicons name="information-circle-outline" size={22} color={color} />
+    )
+    }
+    }
+
      if(showOneTimeScreen === null) {
        return null;
      }else if(showOneTimeScreen === true) {
@@ -160,6 +166,7 @@ const options = ({navigation}) => {
             
             <Drawer.Screen name="Code Help" component={Feed} options={options} />
             <Drawer.Screen name="Saved Code" component={CodeSyntax} options={Soptions} />
+            <Drawer.Screen name="About" component={About}  options={Aoptions} />
           </Drawer.Navigator>
       );
      }
