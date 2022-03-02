@@ -314,7 +314,7 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
-  - RNCPicker (1.16.8):
+  - RNCPicker (2.3.1):
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
@@ -580,13 +580,13 @@ SPEC CHECKSUMS:
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
   RNCAsyncStorage: 6bd5a7ba3dde1c3facba418aa273f449bdc5437a
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNCPicker: 0991c56da7815c0cf946d6f63cf920b25296e5f6
+  RNCPicker: f6c760d4b314585ff35165d8640d7917ae30afb1
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: 024eff8202342abf4b24e11575a16afc441dabfe
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
-PODFILE CHECKSUM: 3914c925675dfb3a0fc1fb1f311c58ddb90d9312
+PODFILE CHECKSUM: 511011c0e67def26fdbc4ebaf8a3156484bdde14
 
 COCOAPODS: 1.11.2

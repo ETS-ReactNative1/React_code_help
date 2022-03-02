@@ -113,7 +113,11 @@ const HelpProvider = (props) => {
                 }
             } 
         } catch (error) {
-          console.error(error);
+          console.error(error,'not good');
+          setLoading(() => { 
+            return {load: true,
+              noAnswer: true}
+          })
         }
       }
       const storeData = async (key,value) => {

@@ -54,6 +54,7 @@ const SearchBar = () => {
 
         );
       }
+      
       setLoading(() => {
         return {load: false,
           noAnswer: false}
