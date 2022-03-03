@@ -128,7 +128,7 @@ function Options(props) {
           <DrawerItemL state={props} focus={1}/>
           <View paddingVertical={5} style={{marginLeft: 17,width: '60%'}}>
                       <Text style={{color: 'white'}}>Search By Titles</Text>
-                      <View style={{backgroundColor: 'gray'}}>
+                      <View style={{backgroundColor: 'gray',borderRadius: 6,paddingLeft: 5}}>
                       <RNPickerSelect
                         placeholder={placeholder}
                         style={{
@@ -153,7 +153,7 @@ function Options(props) {
 
                   <View paddingVertical={5} style={{marginLeft: 17,width: '60%'}}>
                       <Text style={{color: 'white'}}>Show More Help</Text>
-                      <View style={{backgroundColor: 'gray'}}>
+                      <View style={{backgroundColor: 'gray',borderRadius: 6,paddingLeft: 5}}>
                       <RNPickerSelect
                         placeholder={placeholder}
                         value={moreHelp}

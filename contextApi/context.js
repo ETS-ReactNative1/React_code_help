@@ -201,7 +201,17 @@ const HelpProvider = (props) => {
           quality: 1,
           aspect: [4, 3],
         }
+
         const result = await ImagePicker.launchImageLibraryAsync(options)
+
+
+ 
+        
+        /**
+     * The first arg is the options object for customization (it can also be null or omitted for default options),
+     * The second arg is the callback which sends object: response (more info in the API Reference)
+     */
+    
 
 
         if (!result.cancelled) {
