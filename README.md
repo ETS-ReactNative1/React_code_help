@@ -30,4 +30,8 @@ The first implementation proved to be very difficult because I was challenging m
 I wished I had a plan before heading into the project. I was making a lot of mistakes and fixing them but would have been able to identify most of the mistakes quickly if I had a plan 
 I wished I had started with just a react native setup at first instead of using expo wish made it difficult for me to expand the project to a mac application because I used some of Expo methods that were not supported on mac
  
+ Screen Shot
+ https://photos.app.goo.gl/BwKit5bY8zhUDgdq7
+ 
+![code_help array search](https://user-images.githubusercontent.com/71776692/166343768-0dd9d016-52fc-47e9-b321-1343c9a21fe5.PNG)
 
